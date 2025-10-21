@@ -1,12 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Education from "@/components/Education";
+import Projects from "@/components/Projects";
+import Certifications from "@/components/Certifications";
+import Contact from "@/components/Contact";
+import FloatingDownload from "@/components/FloatingDownload";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Hero />
+      <About />
+      <Skills />
+      <Education />
+      <Projects />
+      <Certifications />
+      <Contact />
+      <FloatingDownload />
+      
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-border/50">
+        <div className="max-w-6xl mx-auto text-center text-muted-foreground">
+          <p>© 2024 Prem Dev Kumar. Built with passion and React.</p>
+        </div>
+      </footer>
     </div>
   );
 };
