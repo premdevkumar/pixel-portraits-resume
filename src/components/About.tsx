@@ -1,51 +1,112 @@
-import { Code2, GraduationCap, TrendingUp } from "lucide-react";
+import { Code2, GraduationCap, TrendingUp, Target, Zap, Heart } from "lucide-react";
 
 const About = () => {
+  const highlights = [
+    {
+      icon: Target,
+      title: "Problem Solver",
+      description: "Strong foundation in DSA and algorithmic thinking"
+    },
+    {
+      icon: Zap,
+      title: "Quick Learner",
+      description: "Rapidly adapting to new technologies and frameworks"
+    },
+    {
+      icon: Heart,
+      title: "Passionate Coder",
+      description: "Building projects that make a difference"
+    }
+  ];
+
   const stats = [
-    { icon: GraduationCap, label: "CGPA", value: "8.56/10" },
-    { icon: Code2, label: "Languages", value: "6+" },
-    { icon: TrendingUp, label: "Projects", value: "Multiple" },
+    { icon: GraduationCap, label: "First Year CGPA", value: "8.56/10", color: "primary" },
+    { icon: Code2, label: "Tech Stack", value: "6+ Languages", color: "secondary" },
+    { icon: TrendingUp, label: "Growth", value: "Always Learning", color: "accent" },
   ];
 
   return (
-    <section id="about" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text">
-          About Me
-        </h2>
+    <section id="about" className="py-32 px-4 relative">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 reveal-up">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            About <span className="gradient-text">Me</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Passionate developer on a mission to create impactful solutions
+          </p>
+        </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm a passionate B.Tech Computer Science student at CMR Institute of Technology, Hyderabad, 
-              with a strong foundation in programming and problem-solving. Currently maintaining an impressive 
-              8.56 CGPA in my first year.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              My journey in technology is driven by curiosity and a constant desire to learn. I specialize 
-              in building innovative solutions using modern frameworks like Flutter and React, while maintaining 
-              strong fundamentals in Data Structures and Algorithms.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              When I'm not coding, you'll find me on the cricket field or exploring the latest tech trends 
-              to stay ahead in this ever-evolving industry.
-            </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Story */}
+          <div className="space-y-8 reveal-up">
+            <div className="space-y-6 text-lg leading-relaxed">
+              <p className="text-muted-foreground">
+                I'm a <span className="text-foreground font-semibold">B.Tech Computer Science student</span> at 
+                CMR Institute of Technology, Hyderabad, currently excelling with an <span className="text-primary font-semibold">8.56 CGPA</span> in 
+                my first year.
+              </p>
+              <p className="text-muted-foreground">
+                My journey into technology is fueled by an insatiable <span className="text-secondary font-semibold">curiosity</span> and 
+                a desire to solve real-world problems through code. I specialize in building modern applications 
+                using <span className="text-foreground font-semibold">Flutter, React</span>, and maintaining strong fundamentals 
+                in <span className="text-foreground font-semibold">Data Structures & Algorithms</span>.
+              </p>
+              <p className="text-muted-foreground">
+                Beyond the screen, I'm an avid <span className="text-accent font-semibold">cricket enthusiast</span> and 
+                constantly exploring the latest tech trends to stay at the cutting edge of innovation.
+              </p>
+            </div>
+
+            {/* Highlights */}
+            <div className="grid grid-cols-1 gap-4 pt-4">
+              {highlights.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div key={index} className="flex items-start gap-4 glass-card p-5 rounded-xl hover-glow">
+                    <div className="p-3 rounded-lg bg-primary/10 flex-shrink-0">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          {/* Right: Stats Grid */}
+          <div className="space-y-6 reveal-up" style={{ animationDelay: '0.2s' }}>
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div 
                   key={index}
-                  className="glass-card p-6 rounded-2xl text-center space-y-3 hover-glow"
+                  className="glass-card p-8 rounded-3xl hover-glow group"
                 >
-                  <Icon className="w-8 h-8 mx-auto text-primary" />
-                  <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="flex items-center gap-6">
+                    <div className={`p-5 rounded-2xl bg-${stat.color}/10 group-hover:scale-110 transition-transform`}>
+                      <Icon className={`w-10 h-10 text-${stat.color}`} />
+                    </div>
+                    <div>
+                      <div className="text-sm text-muted-foreground mb-2">{stat.label}</div>
+                      <div className="text-3xl font-bold">{stat.value}</div>
+                    </div>
+                  </div>
                 </div>
               );
             })}
+
+            {/* Quote card */}
+            <div className="glass-card p-8 rounded-3xl border-l-4 border-primary">
+              <p className="text-lg font-medium italic mb-3">
+                "Aspiring to enhance technical expertise and contribute to innovative projects 
+                that shape the future of technology."
+              </p>
+              <p className="text-sm text-muted-foreground">- My Mission</p>
+            </div>
           </div>
         </div>
       </div>
